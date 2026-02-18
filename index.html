@@ -367,7 +367,7 @@ function startBtn(){
     spawnDistractionMole();
     document.getElementById("start").remove();
     setTimeout(()=>{timer = setInterval(()=>{
-    document.getElementById("res").style.width = `${R*10}%`
+    document.getElementById("res").style.width = `${Math.max(0, Math.min(100, R * 10))}%`;
     console.log(`responsibility ${R}`);
     if(R===0){
         return;
@@ -421,8 +421,8 @@ mole.innerHTML = "";
             if(hangover === false){
             bonusChance();
             }
-            document.getElementById("res").style.width = `${R*10}%`
-            document.getElementById("exh").style.width = `${E*10}%`
+            document.getElementById("res").style.width = `${Math.max(0, Math.min(100, R*10))}%`;
+            document.getElementById("exh").style.width = `${Math.max(0, Math.min(100, E*10))}%`;
             return;
         }
         spawnResponsibilityMole();
@@ -453,8 +453,8 @@ mole.innerHTML = "";
             if(bonus === false){
             hangChance();
             }
-            document.getElementById("res").style.width = `${R*10}%`
-            document.getElementById("exh").style.width = `${E*10}%`
+            document.getElementById("res").style.width = `${Math.max(0, Math.min(100, R*10))}%`;
+            document.getElementById("exh").style.width = `${Math.max(0, Math.min(100, E*10))}%`;
             return;
         }
         

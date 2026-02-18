@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+    }
+    body{
+        background-color: rgb(29, 29, 29);
+        transition: 1s;
+    }
+
+td{
+    width: 4rem;
+    height: 4rem;
+}
+
+table {
+    border: 2px solid #54ef54;
+    border-radius: 10px;          
+    border-collapse: separate;    
+    border-spacing: 0;            
+    overflow: hidden;
+    box-shadow: 0px 0px 20px 2px #fff;
+    background-color: rgb(74, 74, 74);
+    opacity: 0.8;
+    transition: 1s;
+}
+
+td {
+    border: 1px solid #54ef54;
+    opacity: 1;
+}
+
+.moledis{
+    background-color: rgb(255, 191, 0);
+    width: 5vh;
+    height: 5vh;
+    border-radius: 100px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #0000008a;
+    box-shadow: 0px 0px 10px 1px rgb(255, 191, 0);
+}
+.moleres{
+    background-color: rgb(71, 238, 71);
+    width: 5vh;
+    height: 5vh;
+    border-radius: 100px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #0000008a;
+    box-shadow: 0px 0px 10px 1px rgb(71, 238, 71);
+}
+.resTitle{
+    width: 20rem;
+    display: flex;
+    justify-content: start;
+}
+#resBar{
+    width: 20rem;
+    height: 1rem;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: start;
+}
+#res{
+    box-shadow: 0px 0px 10px 1px rgb(71, 238, 71);
+    border-radius: 10px;
+    background-color: rgb(71, 238, 71);
+    width: 0%;
+    height: 1rem;
+    transition: 0.5s;
+}
+.exhTitle{
+    width: 20rem;
+    display: flex;
+    justify-content: start;
+    margin-top: 1rem;
+}
+#exhBar{
+    width: 20rem;
+    height: 1rem;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: start;
+}
+#exh{
+    box-shadow: 0px 0px 10px 1px rgb(238, 71, 71);
+    border-radius: 10px;
+    background-color: rgb(238, 71, 71);
+    width: 0%;
+    height: 1rem;
+    transition: 0.5s;
+}
+#state{
+    margin-top: 3rem;
+    transition: 0.5s;
+}
+.bonus{
+    color: yellow;
+    text-shadow: 0px 0px 20px yellow;
+    letter-spacing: 0.5rem;
+}
+.hangover{
+    color: rgb(238, 71, 71);
+    text-shadow: 0px 0px 20px rgb(238, 71, 71);
+    letter-spacing: 0.5rem;
+}
+#start{
+    width: 4rem;
+    height: 2rem;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#start:hover{
+    box-shadow: 0px 0px 10px 1px #fff;
+}
+#name{
+    background-color: rgb(29, 29, 29);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+#game{
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#enterBtn{
+    width: 4rem;
+    height: 2rem;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#enterBtn:hover{
+    box-shadow: 0px 0px 10px 1px #fff;
+}
+.black{
+    color: black;
+}
+.pink{
+    color: pink;
+}
+    </style>
+</head>
+<body id="body">
+    <center>
+        <div id="name">
+            <h1 id="secret">What is your name?</h1>
+            <br>
+            <input type="text" id="firstName" placeholder="First name" class="black">
+            <input type="text" id="lastName" placeholder="last name" class="black">
+            <br>
+            <div id="enterBtn" onclick="checking()">Enter</div>
+        </div>
+        <div id="game">
+        <h1>Whack-a-responsibility</h1>
+        <br>
+        <h2 id="secret2"></h2>
+        <br>
+        <h2 id="score"></h2>
+        <br>
+        <h3 id="countdown"></h3>
+        <br>
+    <table id="moleTable">
+        <tr>
+            <td id="1"></td>
+            <td id="2"></td>
+            <td id="3"></td>
+            <td id="4"></td>
+            <td id="5"></td>
+        </tr>
+        <tr>
+            <td id="6"></td>
+            <td id="7"></td>
+            <td id="8"></td>
+            <td id="9"></td>
+            <td id="10"></td>
+        </tr>
+        <tr>
+            <td id="11"></td>
+            <td id="12"></td>
+            <td id="13"></td>
+            <td id="14"></td>
+            <td id="15"></td>
+        </tr>
+        <tr>
+            <td id="16"></td>
+            <td id="17"></td>
+            <td id="18"></td>
+            <td id="19"></td>
+            <td id="20"></td>
+        </tr>
+        <tr>
+            <td id="21"></td>
+            <td id="22"></td>
+            <td id="23"></td>
+            <td id="24"></td>
+            <td id="25"></td>
+        </tr>
+    </table>
+    <br>
+    <div id="others">
+    <div class="resTitle"><h5>Responsibility:</h5></div>
+    <div id="resBar"><div id="res"></div></div>
+    <div class="exhTitle"><h5>Exhaustion:</h5></div>
+    <div id="exhBar"><div id="exh"></div></div>
+    <h1 id="state"></h1>
+    <div onclick="startBtn()" id="start">
+        Start
+    </div>
+    </div>
+    </div>
+    <audio src="" id="sfx"></audio>
+    <audio src="" id="backgroundAudio"></audio>
+    </center>
+</body>
+<script>
+let m1 = document.getElementById("1");
+let m2 = document.getElementById("2");
+let m3 = document.getElementById("3");
+let m4 = document.getElementById("4");
+let m5 = document.getElementById("5");
+let m6 = document.getElementById("6");
+let m7 = document.getElementById("7");
+let m8 = document.getElementById("8");
+let m9 = document.getElementById("9");
+let m10 = document.getElementById("10");
+let m11 = document.getElementById("11");
+let m12 = document.getElementById("12");
+let m13 = document.getElementById("13");
+let m14 = document.getElementById("14");
+let m15 = document.getElementById("15");
+let m16 = document.getElementById("16");
+let m17 = document.getElementById("17");
+let m18 = document.getElementById("18");
+let m19 = document.getElementById("19");
+let m20 = document.getElementById("20");
+let m21 = document.getElementById("21");
+let m22 = document.getElementById("22");
+let m23 = document.getElementById("23");
+let m24 = document.getElementById("24");
+let m25 = document.getElementById("25");
+
+let timer;
+let countDown;
+
+let responsibilityIncrease = 1;
+let responsibilityDecrease = 0;
+let exhaustionIncrease = 1;
+
+let Rchance = 10;
+let Hchance = 10;
+let bonus = false;
+let hangover = false;
+let secret = false;
+let bonusC = 0;
+let hangoverC = 0;
+
+let R = 0;
+let E = 0;
+
+let state = document.getElementById("state");
+let res = document.getElementById("res");
+let table = document.getElementById("moleTable");
+let score = document.getElementById("score");
+
+
+const moles = [m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16, m17, m18, m19, m20, m21, m22, m23, m24, m25];
+let moleStates = new Array(25).fill(false);
+
+function getFreeIndex() {
+    let index;
+    do {
+        index = Math.floor(Math.random() * 25);
+    } while (moleStates[index]);
+    return index;
+}
+
+function spawnResponsibilityMole() {
+    const contents = ["⛪", "✝️", "📚", "🏫"];
+    const index = getFreeIndex();
+    const i = Math.floor(Math.random() * contents.length);
+
+    moles[index].innerHTML = `<div class="moleres">${contents[i]}</div>`;
+    moleStates[index] = true;
+}
+
+function spawnDistractionMole() {
+    const contents = ["🎮", "🎳", "🛏️", "🎪"];
+    const index = getFreeIndex();
+    const i = Math.floor(Math.random() * contents.length);
+
+    moles[index].innerHTML = `<div class="moledis">${contents[i]}</div>`;
+    moleStates[index] = true;
+}
+
+const startingMinutes = 1.2;
+let time = startingMinutes*60
+
+const timeEl = document.getElementById("countdown");
+
+function countdown(){
+    const minutes = Math.floor(time/60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    timeEl.innerHTML=`${minutes}:${seconds}`
+    time--;
+    if(time === 0){
+        table.remove();
+        document.getElementById("others").remove();
+        clearInterval(countDown);
+        clearInterval(timer); document.getElementById("countdown").remove();
+        score.innerHTML =`Your score: ${calculate()}`;
+        backgroundaudio.pause();
+        if (secret === true && calculate() > 20) {
+        document.getElementById("secret2").innerHTML = `Congrats ang galing mo! <span class="pink"><3</span><br>`;
+    }
+    }
+}
+
+let backgroundaudio = document.getElementById("backgroundAudio");
+
+function startBtn(){
+    backgroundaudio.src="backgroundsound.mp3";
+    backgroundaudio.play();
+    backgroundaudio.volume = 0.1;
+    countdown();
+    countDown = setInterval(countdown, 1000);
+    spawnResponsibilityMole();
+    spawnResponsibilityMole();
+    spawnDistractionMole();
+    document.getElementById("start").remove();
+    setTimeout(()=>{timer = setInterval(()=>{
+    document.getElementById("res").style.width = `${R*10}%`
+    console.log(`responsibility ${R}`);
+    if(R===0){
+        return;
+    }
+    R = Math.min(R - 1, 10);
+}, 3000);
+}, 1000)
+
+}
+
+function calculate(){
+let R_ratio = R/10;
+let E_ratio = E/10;
+let E_good = 1-E_ratio;
+let scoreRatio = (R_ratio * 0.5)+(E_good * 0.5);
+return Math.round(scoreRatio * 25); //final grade
+}
+
+let audio = document.getElementById("sfx");
+
+moles.forEach((mole, index) => {
+    mole.addEventListener("click", () => {
+
+    if (!moleStates[index]) return;   
+
+    moleStates[index] = false;        
+    const moleDiv = mole.firstElementChild;
+    if (!moleDiv) return;
+audio.src="whack.mp3"
+audio.play();
+mole.innerHTML = ""; 
+
+    if (moleDiv.classList.contains("moleres")) {
+        Hchance = Math.min(Hchance + 0.7, 10);
+        if (R >= 10){
+            spawnResponsibilityMole();
+            E = Math.min(E + exhaustionIncrease, 10);
+            console.log(`responsibility ${R}`);
+            console.log(`exhaustion ${E}`);
+            console.log(calculate());
+            bonusCounter();
+            bonusChance();
+            if(hangover === false){
+            bonusChance();
+            }
+            document.getElementById("res").style.width = `${R*10}%`
+            document.getElementById("exh").style.width = `${E*10}%`
+            return;
+        }
+        spawnResponsibilityMole();
+        R = Math.min(R + responsibilityIncrease, 10);
+        E = Math.min(E + exhaustionIncrease, 10);
+        bonusCounter();
+        hangCounter();
+        if(hangover === false){
+        bonusChance();
+        }
+        console.log(`responsibility ${R}`);
+        console.log(`exhaustion ${E}`);
+        console.log(calculate());
+
+
+    } else if (moleDiv.classList.contains("moledis")) {
+        E -= exhaustionIncrease;
+        spawnDistractionMole();
+        Hchance = Math.max(Hchance - 1, 1);
+        console.log(`Hchance ${Hchance}`)
+        
+        if (E <= 0){
+            console.log(`responsibility ${R}`);
+            console.log(`exhaustion ${E}`);
+            console.log(calculate());
+            hangCounter();
+            if(bonus === false){
+            hangChance();
+            }
+            document.getElementById("res").style.width = `${R*10}%`
+            document.getElementById("exh").style.width = `${E*10}%`
+            return;
+        }
+        
+        hangCounter();
+        bonusCounter();
+        if(bonus === false){
+        hangChance();
+        }
+        console.log(`responsibility ${R}`);
+        console.log(`exhaustion ${E}`);
+        console.log(calculate());
+        
+    }
+    document.getElementById("res").style.width = `${R*10}%`
+    document.getElementById("exh").style.width = `${E*10}%`
+    });
+});
+
+function bonusCounter(){
+    if(bonus === true){
+        bonusC += 1;
+    }
+    if(bonusC >= 3){
+        bonus = false;
+        responsibilityIncrease -= 1;
+        bonusC = 0;
+        res.style.backgroundColor = "rgb(71, 238, 71)"
+        res.style.boxShadow ="0px 0px 10px 1px rgb(71, 238, 71)"
+        table.style.boxShadow = "0px 0px 20px 2px #fff"
+        state.classList.remove("bonus");
+        state.innerHTML = " "
+    }
+};
+
+function bonusChance(){
+    let chance = Math.floor(Math.random()*Rchance)+1;
+    if(chance === 1 && bonus === false){
+        bonus = true;
+        responsibilityIncrease += 1;
+        Hchance = 10;
+        console.log("Bonus activated!");
+        table.style.boxShadow = "0px 0px 20px 2px rgb(255,255,0)"
+        res.style.backgroundColor ="rgb(255,255,0)"
+        res.style.boxShadow ="0px 0px 20px 2px rgb(255,255,0)"
+        state.classList.add("bonus");
+        state.innerHTML = "Bonus!"
+    }
+}
+
+function hangCounter(){
+    if(hangover){
+        hangoverC += 1;
+    }
+    if(hangoverC >= 3){
+        hangover = false;
+        responsibilityDecrease -= 1;
+        hangoverC = 0;
+        exh.style.backgroundColor = "rgb(238, 71, 71)"
+        exh.style.boxShadow ="0px 0px 10px 1px rgb(238, 71, 71)"
+        table.style.boxShadow = "0px 0px 20px 2px #fff"
+        state.classList.remove("hangover");
+        state.innerHTML = " "
+    }
+};
+
+function hangChance(){
+    let chance = Math.floor(Math.random()*Hchance)+1;
+    if(chance === 1 && hangover === false && bonus === false){
+        hangover = true;
+        responsibilityDecrease += 1;
+        console.log("hangover activated!");
+        table.style.boxShadow = "0px 0px 20px 2px rgb(238, 71, 71)"
+        state.classList.add("hangover")
+        state.innerHTML = "Hangover!"
+    }
+    console.log(`chance ${chance}`)
+}
+
+function checking(){
+    
+    let firstN = document.getElementById("firstName").value.toUpperCase().replace(/\s/g, "");
+    let lastN = document.getElementById("lastName").value.toUpperCase().replace(/\s/g, "");
+    
+    let fTarget = "GLAIRICH"
+    let fSorted = firstN.split("").sort().join("");
+    let targetfSorted = fTarget.split("").sort().join("");
+
+    let lTarget = "DELACRUZ"
+    let lSorted = lastN.split("").sort().join("");
+    let targetlSorted = lTarget.split("").sort().join("");
+    
+
+    if(fSorted === targetfSorted && lSorted === targetlSorted){
+        setTimeout(()=>{
+            document.getElementById("firstName").remove();
+            document.getElementById("lastName").remove();
+            document.getElementById("enterBtn").remove();
+            document.getElementById("secret").innerHTML = `Goodluck <span class="pink"><3</span>`
+        }, 1000);
+        setTimeout(()=>{
+            document.getElementById("name").style.display = "none";
+        }, 2000);
+        secret = true;
+        return;
+    }
+    if(firstN === "" || lastN === ""){
+        return;
+    }
+    document.getElementById("name").style.display = "none";
+}
+
+</script>
+</html>

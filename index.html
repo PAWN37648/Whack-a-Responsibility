@@ -359,7 +359,7 @@ let backgroundaudio = document.getElementById("backgroundAudio");
 function startBtn(){
     backgroundaudio.src="backgroundsound.mp3";
     backgroundaudio.play();
-    backgroundaudio.volume = 0.3;
+    backgroundaudio.volume = 0.4;
     countdown();
     countDown = setInterval(countdown, 1000);
     spawnResponsibilityMole();
@@ -405,7 +405,7 @@ moles.forEach((mole, index) => {
     if (!moleDiv) return;
 audio.src="whack.mp3"
 audio.play();
-audio.volume = "0.3";
+audio.volume = "0.4";
 mole.innerHTML = ""; 
 
     if (moleDiv.classList.contains("moleres")) {

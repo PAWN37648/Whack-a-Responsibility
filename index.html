@@ -184,7 +184,7 @@ td {
             <input type="text" id="firstName" placeholder="First name" class="black">
             <input type="text" id="lastName" placeholder="last name" class="black">
             <br>
-            <div id="enterBtn" onclick="checking()">Enter</div>
+            <div id="enterBtn">Enter</div>
         </div>
         <div id="game">
         <h1>Whack-a-responsibility</h1>
@@ -531,39 +531,6 @@ function hangChance(){
         state.innerHTML = "Hangover!"
     }
     console.log(`chance ${chance}`)
-}
-
-function checking(){
-    
-    let firstN = document.getElementById("firstName").value.toUpperCase().replace(/\s/g, "");
-    let lastN = document.getElementById("lastName").value.toUpperCase().replace(/\s/g, "");
-    
-    let fTarget = "GLAIRICH"
-    let fSorted = firstN.split("").sort().join("");
-    let targetfSorted = fTarget.split("").sort().join("");
-
-    let lTarget = "DELACRUZ"
-    let lSorted = lastN.split("").sort().join("");
-    let targetlSorted = lTarget.split("").sort().join("");
-    
-
-    if(fSorted === targetfSorted && lSorted === targetlSorted){
-        setTimeout(()=>{
-            document.getElementById("firstName").remove();
-            document.getElementById("lastName").remove();
-            document.getElementById("enterBtn").remove();
-            document.getElementById("secret").innerHTML = `Goodluck <span class="pink"><3</span>`
-        }, 1000);
-        setTimeout(()=>{
-            document.getElementById("name").style.display = "none";
-        }, 2000);
-        secret = true;
-        return;
-    }
-    if(firstN === "" || lastN === ""){
-        return;
-    }
-    document.getElementById("name").style.display = "none";
 }
 
 </script>
